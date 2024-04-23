@@ -26,30 +26,36 @@ function Books() {
       ...book,
       checkedoutby: inputs.name,
       duedate: inputs.duedate,
-      status: "checked out"
+      status: "checked out",
     };
     try {
       const response = await fetch(`http://localhost:3000/books/${id}`, {
-        method: 'PUT',
+        method: "PUT",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(updatedBook),
       });
       if (!response.ok) {
-        throw new Error('Failed to update book status');
+        throw new Error("Failed to update book status");
       }
       setBook(updatedBook);
       setSubmitted(true); // Set submitted to true after successful submission
     } catch (error) {
-      console.error('Error updating book status:', error);
+      console.error("Error updating book status:", error);
     }
   };
 
   return (
     <>
       <h1>Check Out</h1>
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
         {book && (
           <>
             <h2>{book.title}</h2>
@@ -85,7 +91,9 @@ function Books() {
           </form>
         ) : (
           // Render the thank you message if submitted
-          <h3>`Thank you for checking out {book.title} by {book.author}</h3>
+          <h3>
+            Thank you for checking out {book.title} by {book.author}
+          </h3>
         )}
       </div>
     </>

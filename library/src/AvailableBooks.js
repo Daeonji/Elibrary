@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Book from './Book'
+import Book from "./Book";
 
-function Books() {
+function AvailableBooks() {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
@@ -18,14 +18,15 @@ function Books() {
     <div>
       <h1>Available Books</h1>
       <ul>
-        {books && books.map((book, i) => (
+        {books &&
+          books.map((book, i) => (
             <div key={i}>
-                <Book book={book}/>
+              <Book book={book} />
             </div>
-        ))}
+          ))}
       </ul>
     </div>
   );
 }
 
-export default Books;
+export default AvailableBooks;
