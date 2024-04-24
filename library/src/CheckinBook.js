@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Button } from "@mui/material";
+import pic from "..//src//images/library2.jpg";
 
 function Books() {
   const [book, setBook] = useState(null);
@@ -50,7 +51,32 @@ function Books() {
 
   return (
     <>
-      <h1>Book Details</h1>
+      <div
+        style={{
+            position: "relative",
+            textAlign: "left",
+            marginBottom: "20px",
+        }}
+    >
+        <img
+            src={pic}
+            alt="Library"
+            style={{ width: "100%", height: "300px" }}
+        />
+        <div
+            style={{
+                position: "absolute",
+                top: "50%",
+                left: "15%",
+                transform: "translate(-50%, -50%)",
+                color: "white",
+            }}
+        >
+            <div>
+                <h1>CHECK IN:</h1>
+            </div>
+        </div>
+    </div>
       <div
         style={{
           display: "flex",
@@ -65,9 +91,7 @@ function Books() {
             <p>Publisher: {book.publisher}</p>
             <p>ISBN: {book.isbn}</p>
             <p>Status: {book.status}</p>
-            <Button LinkComponent={Link} to={`/books/checkout/${id}`}>
-              Check Out
-            </Button>
+            <h4>Thank you for checking in {book.title}</h4>
           </>
         )}
       </div>
