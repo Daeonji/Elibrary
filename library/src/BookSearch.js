@@ -23,7 +23,7 @@ function Search() {
 
   return (
     <div>
-      <h1>Here are all the books with the name "{searchQuery}":</h1>
+      <h4>Here are all the books with the name "{searchQuery}":</h4>
       {books.length === 0 ? (
         <div style={{ display: "flex", justifyContent: "center", alignItems: "center", minHeight: "50vh" }}>
             <h2>No books found with title "{searchQuery}"</h2>

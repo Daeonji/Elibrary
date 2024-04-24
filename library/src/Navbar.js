@@ -20,7 +20,7 @@ function NavTab() {
               <NavDropdown.Item href="/available-books">Available Books</NavDropdown.Item>
               <NavDropdown.Item href="/checkedout-books">Checked Out Books</NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="/addBook">About Us</Nav.Link>
+            <Nav.Link href="/about">About Us</Nav.Link>
           </Nav>
           <div className="d-flex">
             <input

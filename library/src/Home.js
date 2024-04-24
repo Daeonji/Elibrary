@@ -66,11 +66,18 @@ function Home() {
           <img
             src={images[currentImageIndex]}
             alt="Building"
-            style={{ width: "100%", height: "auto" }}
+            style={{ width: "100%", height: "400px" }}
           />
+          </div>
+        <br/>
+        <div style={{ maxWidth: "600px", width: "100%", maxHeight: "400px", height: "100%",overflow: "hidden" }}>
+          <p>"Danny's Elibrary is my go-to destination for discovering new reads. The vast collection never fails to surprise me, and the user-friendly interface makes browsing a breeze. Thanks to Danny's Elibrary, I've expanded my literary horizons and found some hidden gems!"</p>
+          <b>Emily R. - Book Enthusiast</b>
+          <p>"I've been a loyal user of Danny's Elibrary for years, and it never disappoints. From bestselling novels to classic literature, there's something for every mood and taste. The ability to download books for offline reading is a game-changer for me. Thank you for enriching my reading experience!"</p>
+          <b>Sophie L. - Fiction Lover</b>
         </div>
         <br/>
-        <h2><u>Operating Hours:</u></h2>
+        <h2><u>In-Person Operating Hours:</u></h2>
         <div className = "center" id ="operatingHours">
                 <table>
                     <tr>

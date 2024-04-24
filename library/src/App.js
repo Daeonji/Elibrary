@@ -10,6 +10,7 @@ import CheckedoutBooks from "./CheckedoutBooks";
 import CheckoutBook from "./CheckoutBook";
 import CheckinBook from "./CheckinBook";
 import Booksearch from "./BookSearch";
+import About from "./About"
 function App() {
   return (
     <Router>
@@ -22,6 +23,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
             <Route path="/books" element={<Books />} />
+            <Route path="/about" element={<About/>}/>
             <Route path="/available-books" element={<AvailableBooks />} />
             <Route path="/checkedout-books" element={<CheckedoutBooks />} />
             <Route path="/books/checkout/:id/" element={<CheckoutBook />} />
