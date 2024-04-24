@@ -36,7 +36,7 @@ const About = () => {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            paddingLeft: "150px", // Adjust paddingLeft to move the text box right
+            paddingLeft: "250px", // Adjust paddingLeft to move the text box right
             marginTop: "20px", // Adjust margin as needed
         }}
     >
@@ -50,7 +50,6 @@ const About = () => {
         <div style={{ flex: "1", textAlign: "center" }}>
             <img
                 src={pic2}
-                alt="Image"
                 style={{ width: "600px", height: "400px" }} // Adjust dimensions as needed
             />
         </div>
