@@ -40,10 +40,11 @@ const About = () => {
             marginTop: "20px", // Adjust margin as needed
         }}
     >
-        <div style={{ flex: "1", maxWidth: "700px", padding: "20px"}}>
+        <div style={{ flex: "1", maxWidth: "700px", padding: "40px"}}>
             <h4>Welcome to Danny's Elibrary!</h4>
             <p>At Danny's Elibrary, we believe in the power of knowledge and the joy of reading. Our mission is to provide a digital sanctuary where book lovers of all ages can explore, discover, and immerse themselves in a world of literature.</p>
             <p>With an extensive collection of e-books spanning various genres, from timeless classics to contemporary bestsellers, we aim to cater to every literary taste and preference. Whether you're seeking an enthralling mystery, a heartwarming romance, or thought-provoking non-fiction, our curated selection has something for everyone.</p>
+            <p>You can <a href = "mailto:dannyelibrary@gmail.com">email us</a> or call 713-555-1235 (During business hours only).</p>
             <p>Start exploring today and embark on a journey of literary discovery with Danny's Elibrary.</p>
             <p>Happy reading!</p>
         </div>
@@ -53,7 +54,6 @@ const About = () => {
                 style={{ width: "600px", height: "400px" }} // Adjust dimensions as needed
             />
         </div>
-        
     </div>
 </>
 

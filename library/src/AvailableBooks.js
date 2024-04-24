@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Book from "./Book";
+import pic from "..//src//images/library2.jpg";
 
 function AvailableBooks() {
   const [books, setBooks] = useState([]);
@@ -15,8 +16,34 @@ function AvailableBooks() {
   }, []);
 
   return (
+    <>
+    <div
+        style={{
+            position: "relative",
+            textAlign: "left",
+            marginBottom: "20px",
+        }}
+    >
+        <img
+            src={pic}
+            alt="Library"
+            style={{ width: "100%", height: "300px" }}
+        />
+        <div
+            style={{
+                position: "absolute",
+                top: "50%",
+                left: "15%",
+                transform: "translate(-50%, -50%)",
+                color: "white",
+            }}
+        >
+            <div>
+                <h1>AVAILABLE BOOKS:</h1>
+            </div>
+        </div>
+    </div>
     <div>
-      <h1>Available Books</h1>
       <ul>
         {books &&
           books.map((book, i) => (
@@ -26,6 +53,7 @@ function AvailableBooks() {
           ))}
       </ul>
     </div>
+    </>
   );
 }
 

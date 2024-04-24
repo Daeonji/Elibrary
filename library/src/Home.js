@@ -31,7 +31,7 @@ function Home() {
         <img
           src={pic}
           alt="Library"
-          style={{ width: "100%", height: "400px" }}
+          style={{ width: "100%", height: "300px" }}
         />
         <div
           style={{
