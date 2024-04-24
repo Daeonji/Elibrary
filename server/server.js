@@ -12,10 +12,10 @@ let mycoll;
 console.log("Trying to connect");
 
 client.connect().then(() => {
-    console.log("Connected to MongoDB");
-    const db = client.db("Library");
-    mycoll = db.collection("books");
-  })
+  console.log("Connected to MongoDB");
+  const db = client.db("Library");
+  mycoll = db.collection("books");
+})
   .catch((error) => {
     console.error("Error connecting to MongoDB:", error);
   });
@@ -42,14 +42,14 @@ app.get("/books", async (req, res) => {
     }
     const availParam = req.query.status;
     if (availParam === 'available') {
-      const availableBooks = await mycoll.find({ status: "available" }, {projection:{"_id": false}}).toArray();
+      const availableBooks = await mycoll.find({ status: "available" }, { projection: { "_id": false } }).toArray();
       res.json(availableBooks);
-    } else if(availParam === 'checkedout' || availParam === 'checked_out'){
-        const nonAvail = await mycoll.find({status: "checked out" }, {projection:{"_id": false}}).toArray();
-        res.json(nonAvail);
+    } else if (availParam === 'checkedout' || availParam === 'checked_out') {
+      const nonAvail = await mycoll.find({ status: "checked out" }, { projection: { "_id": false } }).toArray();
+      res.json(nonAvail);
     }
-    else{
-      const allBooks = await mycoll.find({}, {projection:{"_id": false}}).toArray();
+    else {
+      const allBooks = await mycoll.find({}, { projection: { "_id": false } }).toArray();
       res.json(allBooks);
     }
   } catch (error) {
@@ -59,23 +59,43 @@ app.get("/books", async (req, res) => {
 });
 
 app.get("/books/:id", async (req, res) => {
-    try {
-      const bookId = req.params.id;
-      if (!mycoll) {
-        throw new Error("MongoDB collection not initialized");
-      }
-  
-      const book = await mycoll.findOne({ id: bookId }, {projection:{"_id": false}}); 
-      if (book) {
-        res.json(book);
-      } else {
-        res.sendStatus(404);
-      }
-    } catch (error) {
-      console.error("Error retrieving book from MongoDB:", error);
-      res.status(500);
+  try {
+    const bookId = req.params.id;
+    if (!mycoll) {
+      throw new Error("MongoDB collection not initialized");
     }
-  });
+
+    const book = await mycoll.findOne({ id: bookId }, { projection: { "_id": false } });
+    if (book) {
+      res.json(book);
+    } else {
+      res.sendStatus(404);
+    }
+  } catch (error) {
+    console.error("Error retrieving book from MongoDB:", error);
+    res.status(500);
+  }
+});
+
+app.post("/books/search", async (req, res) => {
+  try {
+    const title = req.query.title;
+
+    if (!mycoll) {
+      throw new Error("MongoDB collection not initialized");
+    }
+
+    // Construct the regex query using the title variable
+    const books = await mycoll.find({ "title": { "$regex": title, "$options": "i" } }).toArray();
+
+    // Send the books array as a JSON response
+    res.json(books);
+  } catch (error) {
+    console.error("Error retrieving book from MongoDB:", error);
+    // Send a 500 status code and an error message as a response
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
 
 app.post("/books", async (req, res) => {
   try {
@@ -84,7 +104,7 @@ app.post("/books", async (req, res) => {
       throw new Error("MongoDB collection not initialized");
     }
     else if (!newBook.id || !newBook.title || !newBook.author || !newBook.publisher || !newBook.isbn || newBook.avail === undefined) {
-        return res.status(403).json({ error: "Missing required fields" });
+      return res.status(403).json({ error: "Missing required fields" });
     }
 
     await mycoll.insertOne(newBook);
