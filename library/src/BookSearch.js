@@ -24,47 +24,68 @@ function Search() {
 
   return (
     <>
-    <div
+      <div
         style={{
-            position: "relative",
-            textAlign: "left",
-            marginBottom: "20px",
+          position: "relative",
+          textAlign: "left",
+          marginBottom: "20px",
         }}
-    >
+      >
         <img
-            src={pic}
-            alt="Library"
-            style={{ width: "100%", height: "300px" }}
+          src={pic}
+          alt="Library"
+          style={{ width: "100%", height: "300px" }}
         />
         <div
-            style={{
-                position: "absolute",
-                top: "50%",
-                left: "20%",
-                transform: "translate(-50%, -50%)",
-                color: "white",
-            }}
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "20%",
+            transform: "translate(-50%, -50%)",
+            color: "white",
+          }}
         >
-            <div>
-                <h1>BOOKS with the title "{searchQuery}":</h1>
-            </div>
+          <div>
+            <h1>BOOKS with the title "{searchQuery}":</h1>
+          </div>
         </div>
-    </div>
-    <div>
-      {books.length === 0 ? (
-        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", minHeight: "50vh" }}>
+      </div>
+      <div>
+        {books.length === 0 ? (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              minHeight: "50vh",
+            }}
+          >
             <h2>No books found with title "{searchQuery}"</h2>
-        </div>
-      ) : (
-        <ul>
-          {books.map((book, i) => (
-            <div key={i}>
-              <Book book={book} />
-            </div>
-          ))}
-        </ul>
-      )}
-    </div>
+          </div>
+        ) : (
+          <ul
+            style={{
+              display: books.length > 1 ? "flex" : "block",
+              flexWrap: books.length > 1 ? "wrap" : "nowrap",
+              listStyleType: "none",
+              padding: 0,
+            }}
+          >
+            {books.map((book, i) => (
+              <li
+                key={i}
+                style={{
+                  marginRight: books.length > 1 ? "20px" : "0",
+                  marginBottom: books.length > 1 ? "20px" : "0",
+                  width: books.length > 1 ? "calc(33.33% - 20px)" : "auto",
+                }}
+              >
+                <Book book={book} />
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
     </>
   );
 }

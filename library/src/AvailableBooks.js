@@ -17,42 +17,54 @@ function AvailableBooks() {
 
   return (
     <>
-    <div
+      <div
         style={{
-            position: "relative",
-            textAlign: "left",
-            marginBottom: "20px",
+          position: "relative",
+          textAlign: "left",
+          marginBottom: "20px",
         }}
-    >
+      >
         <img
-            src={pic}
-            alt="Library"
-            style={{ width: "100%", height: "300px" }}
+          src={pic}
+          alt="Library"
+          style={{ width: "100%", height: "300px" }}
         />
         <div
-            style={{
-                position: "absolute",
-                top: "50%",
-                left: "15%",
-                transform: "translate(-50%, -50%)",
-                color: "white",
-            }}
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "15%",
+            transform: "translate(-50%, -50%)",
+            color: "white",
+          }}
         >
-            <div>
-                <h1>AVAILABLE BOOKS:</h1>
-            </div>
+          <div>
+            <h1>AVAILABLE BOOKS:</h1>
+          </div>
         </div>
-    </div>
-    <div>
-      <ul>
+      </div>
+      <ul
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          listStyleType: "none",
+          padding: 0,
+        }}
+      >
         {books &&
           books.map((book, i) => (
-            <div key={i}>
+            <li
+              key={i}
+              style={{
+                marginRight: "20px",
+                marginBottom: "30px",
+                width: "calc(33.33% - 20px)",
+              }}
+            >
               <Book book={book} />
-            </div>
+            </li>
           ))}
       </ul>
-    </div>
     </>
   );
 }

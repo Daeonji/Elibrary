@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Book from './Book'
-import pic from "..//src//images/library2.jpg"
+import Book from "./Book";
+import pic from "..//src//images/library2.jpg";
 
 function Books() {
   const [books, setBooks] = useState([]);
@@ -17,41 +17,54 @@ function Books() {
 
   return (
     <>
-    <div
+      <div
         style={{
-            position: "relative",
-            textAlign: "left",
-            marginBottom: "20px",
+          position: "relative",
+          textAlign: "left",
+          marginBottom: "20px",
         }}
-    >
+      >
         <img
-            src={pic}
-            alt="Library"
-            style={{ width: "100%", height: "300px" }}
+          src={pic}
+          alt="Library"
+          style={{ width: "100%", height: "300px" }}
         />
         <div
-            style={{
-                position: "absolute",
-                top: "50%",
-                left: "17%",
-                transform: "translate(-50%, -50%)",
-                color: "white",
-            }}
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "17%",
+            transform: "translate(-50%, -50%)",
+            color: "white",
+          }}
         >
-            <div>
-                <h1>CHECKED OUT BOOKS:</h1>
-            </div>
+          <div>
+            <h1>CHECKED OUT BOOKS:</h1>
+          </div>
         </div>
-    </div>
-    <div>
-      <ul>
-        {books && books.map((book, i) => (
-            <div key={i}>
-                <Book book={book}/>
-            </div>
-        ))}
+      </div>
+      <ul
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          listStyleType: "none",
+          padding: 0,
+        }}
+      >
+        {books &&
+          books.map((book, i) => (
+            <li
+              key={i}
+              style={{
+                marginRight: "20px",
+                marginBottom: "30px",
+                width: "calc(33.33% - 20px)",
+              }}
+            >
+              <Book book={book} />
+            </li>
+          ))}
       </ul>
-    </div>
     </>
   );
 }
