@@ -1,7 +1,9 @@
 const { MongoClient } = require("mongodb");
+require('dotenv').config();
+
 const express = require("express");
 
-const cs = "mongodb+srv://sa:password123.@cluster1.ld8vhiy.mongodb.net/";
+const cs = process.env.MONGO_URI;
 const client = new MongoClient(cs);
 const app = express();
 
